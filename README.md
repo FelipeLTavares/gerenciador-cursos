@@ -45,7 +45,9 @@ Esse é projeto faz parte de um teste técnico que visa avaliar meus conheciment
  - Escolhi o banco Postgres por ser o banco relacional que mais tenho afinidade;
  - Escolhi o Java em detrimento ao Kotlin por ter mais afinidade com o primeiro;
  - Os dados das autenticação foram mockados para facilitar o teste;
+ - Para facilitar também deixei as chaves públicas e privadas usadas na verificação do JWT fixos no projeto;
  - Para forçar o usuário a sempre estar com um token atualizado, foi implementado uma middleware que verifica se as requisições retornaram uma statusCode 401, sendo o caso, volta para a tela de login para se autenticar novamente;
  - Não ficou explícito, mas supus que um memso aluno não podia ser matriculado no mesmo curso maios de uma vez, então limitei os alunos que são mostrados no formulário de matrícula no curso;
  - As credenciais do banco também ficaram "mockadas" no docker-compose para facilitar o desenvolvimento;
  - Como não existiam informações muito sensívies no front, optei por deixar contantes gerais num arquivo de constantes;
+ - Por limitações técnicas subi o diretório "target" da api, para facilitar rodar o projeto depois de clonado.
