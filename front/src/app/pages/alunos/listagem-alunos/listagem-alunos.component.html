@@ -1,0 +1,52 @@
+<div class="min-h-screen bg-gray-50 px-4 py-6">
+  <div class="max-w-4xl mx-auto mb-4">
+    <h2 class="text-2xl font-bold text-gray-800 text-center">Lista de Alunos</h2>
+  </div>
+
+  <div class="flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto mb-6 gap-4">
+    <button
+      (click)="irPaginaInicio()"
+      class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition w-full md:w-auto text-center"
+    >
+      Voltar
+  </button>
+
+    <a
+      (click)="irPaginaCadastroAluno()"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition w-full md:w-auto text-center"
+    >
+      Novo Aluno
+    </a>
+  </div>
+  
+    <div class="overflow-x-auto max-w-4xl mx-auto">
+      <table class="w-full bg-white shadow rounded-lg">
+        <thead class="bg-gray-200 text-gray-700">
+          <tr>
+            <th class="text-left px-6 py-3">ID</th>
+            <th class="text-left px-6 py-3">Nome</th>
+            <th class="text-left px-6 py-3">E-mail</th>
+            <th class="text-right px-6 py-3">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (aluno of alunos; track aluno.id) {
+            <tr class="border-t">
+              <td class="px-6 py-4">{{ aluno.id }}</td>
+              <td class="px-6 py-4">{{ aluno.nome }}</td>
+              <td class="px-6 py-4">{{ aluno.email }}</td>
+              <td class="px-6 py-4 text-right">
+                <button
+                (click)="removerAluno(aluno.id)"
+                  class="text-red-600 hover:text-red-800 font-semibold"
+                >
+                  Remover
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

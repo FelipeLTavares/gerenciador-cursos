@@ -1,0 +1,46 @@
+<div class="min-h-screen bg-gray-50 px-4 py-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center max-w-4xl mx-auto mb-6">
+      <button
+      (click)="irPaginaInicio()"
+        class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+      >
+        Voltar
+      </button>
+  
+      <h2 class="text-2xl font-bold text-center flex-grow">Cadastrar Aluno</h2>
+  
+      <button
+        (click)="cadastrarAluno()"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+      >
+        Salvar
+      </button>
+    </div>
+  
+    <!-- Formulário -->
+    <div class="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
+      <form class="space-y-4">
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">Nome</label>
+          <input
+            type="text"
+            [(ngModel)]="aluno.nome"
+            name="nome"
+            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+  
+        <div>
+          <label class="block text-gray-700 font-medium mb-1">E-mail</label>
+          <input
+            type="email"
+            [(ngModel)]="aluno.email"
+            name="email"
+            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+  
