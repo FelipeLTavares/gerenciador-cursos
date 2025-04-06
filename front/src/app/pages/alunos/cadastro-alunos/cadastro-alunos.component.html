@@ -1,46 +1,56 @@
 <div class="min-h-screen bg-gray-50 px-4 py-6">
-    <!-- Header -->
-    <div class="flex justify-between items-center max-w-4xl mx-auto mb-6">
-      <button
+  <div class="flex justify-between items-center max-w-4xl mx-auto mb-6">
+    <button
       (click)="irPaginaInicio()"
-        class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
-      >
-        Voltar
-      </button>
-  
-      <h2 class="text-2xl font-bold text-center flex-grow">Cadastrar Aluno</h2>
-  
-      <button
-        (click)="cadastrarAluno()"
-        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-      >
-        Salvar
-      </button>
-    </div>
-  
-    <!-- Formulário -->
-    <div class="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
-      <form class="space-y-4">
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">Nome</label>
-          <input
-            type="text"
-            [(ngModel)]="aluno.nome"
-            name="nome"
-            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-  
-        <div>
-          <label class="block text-gray-700 font-medium mb-1">E-mail</label>
-          <input
-            type="email"
-            [(ngModel)]="aluno.email"
-            name="email"
-            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </form>
-    </div>
+      class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+    >
+      Voltar
+    </button>
+
+    <h2 class="text-2xl font-bold text-center flex-grow">Cadastrar Aluno</h2>
+
+    <div class="w-[90px]"></div>
   </div>
-  
+
+  <div class="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
+    <form #formAluno="ngForm" (ngSubmit)="cadastrarAluno()" class="space-y-4">
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Nome</label>
+        <input
+          type="text"
+          [(ngModel)]="aluno.nome"
+          name="nome"
+          required
+          #nome="ngModel"
+          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <p *ngIf="nome.invalid && nome.touched" class="text-red-500 text-sm">Nome é obrigatório.</p>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">E-mail</label>
+        <input
+          type="email"
+          [(ngModel)]="aluno.email"
+          name="email"
+          required
+          email
+          #email="ngModel"
+          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <p *ngIf="email.errors?.['required'] && email.touched" class="text-red-500 text-sm">E-mail é obrigatório.</p>
+        <p *ngIf="email.errors?.['email'] && email.touched" class="text-red-500 text-sm">E-mail inválido.</p>
+      </div>
+
+      <div class="text-right">
+        <button
+          type="submit"
+          [disabled]="formAluno.invalid"
+          class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition disabled:opacity-50"
+        >
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -30,7 +30,7 @@ export class CadastroCursosComponent {
     this.router.navigate(['/cursos']);
   }
 
-  cadastrarAluno() {
+  cadastrarCurso() {
     this.cursosService.cadastrar(this.curso).subscribe({
       next: () => this.irPaginaCursos(),
       error: () => this.mensagemErro = 'Errro ao cadastrar aluno!'
