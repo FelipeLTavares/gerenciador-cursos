@@ -5,7 +5,7 @@ front/.angular/cache/
 front/.angular/
 
 # Java/Quarkus
-back/target/
+# back/target/
 back/.classpath
 back/.project
 back/.settings/

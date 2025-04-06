@@ -1,0 +1,17 @@
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\controllers\AlunoController.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\controllers\AutenticacaoController.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\controllers\CursoController.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\controllers\MatriculaController.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\dtos\AlunoMatriculadoDto.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\entities\Aluno.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\entities\Curso.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\entities\Matricula.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\entities\Usuario.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\GreetingResource.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\repositories\AlunoRepository.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\repositories\CursoRepository.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\repositories\MatriculaRepository.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\services\AlunoService.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\services\AutenticacaoService.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\services\CursoService.java
+C:\Users\Felipe\Documents\PROJETOS\unifor\back\src\main\java\org\unifor\services\MatriculaService.java
