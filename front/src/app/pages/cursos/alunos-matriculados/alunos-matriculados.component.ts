@@ -20,18 +20,18 @@ export class AlunosMatriculadosComponent {
     private router: Router,
     private route: ActivatedRoute) { }
 
-  alunos: any[] = [];
+  alunosNaoMatriculados: any[] = [];
   alunosMatriculados: any[] = [];
   modalAberto: boolean = false;
   curso: any = null;
   dadosTabela: DadosTabelaGenerica | null = null;
 
   ngOnInit() {
-    this.buscarAlunos();
     this.curso = {
       id: Number(this.route.snapshot.paramMap.get('id'))
     };
     this.buscarMatriculas();
+    this.buscarAlunosNaoMatriculados(Number(this.route.snapshot.paramMap.get('id')));
   }
 
   irPaginaCursos() {
@@ -41,6 +41,7 @@ export class AlunosMatriculadosComponent {
   abrirModal() {
     if (this.curso.id) {
       this.modalAberto = true;
+      this.buscarAlunosNaoMatriculados(Number(this.curso.id));
     }
   }
 
@@ -49,8 +50,6 @@ export class AlunosMatriculadosComponent {
   }
 
   confirmarMatricula(idAluno: number) {
-    console.log("asdasd", idAluno, this.curso.id)
-
     this.matriculasService.matricular({
       aluno: {id: idAluno},
       curso: {id: this.curso.id}
@@ -59,6 +58,7 @@ export class AlunosMatriculadosComponent {
       next: (res) => {
         this.fecharModal()
         this.buscarMatriculas()
+        this.buscarAlunosNaoMatriculados(this.curso.id)
       },
       error: (err) => console.log(err)
     })
@@ -71,11 +71,11 @@ export class AlunosMatriculadosComponent {
     })
   }
 
-  buscarAlunos() {
-    this.alunosService.buscarAlunos()
+  buscarAlunosNaoMatriculados(id: number) {
+    this.alunosService.buscarAlunosNaoMatriculadosNoCurso(id)
       .subscribe({
-        next: (dados) => {
-          this.alunos = dados
+        next: (dados: any) => {
+          this.alunosNaoMatriculados = dados
         },
         error: (erro) => {
           console.log('Erro ao carregar alunos', erro);

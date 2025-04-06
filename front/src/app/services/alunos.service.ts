@@ -23,4 +23,8 @@ export class AlunosService {
   excluirAluno(id: number) {
     return this.http.delete(`${constants.BASE_URL}/alunos/${id}`)
   }
+
+  buscarAlunosNaoMatriculadosNoCurso(id: number) {
+    return this.http.get(`${constants.BASE_URL}/alunos/alunos-nao-matriculados/${id}`)
+  }
 }

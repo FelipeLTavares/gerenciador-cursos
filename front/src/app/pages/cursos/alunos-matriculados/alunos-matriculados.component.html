@@ -30,7 +30,7 @@
   @if (modalAberto) {
     <app-modal-adicionar-alunos
       [curso]="curso"
-      [alunos]="alunos"
+      [alunos]="alunosNaoMatriculados"
       (confirmar)="confirmarMatricula($event)"
       (fechar)="fecharModal()"
     />
