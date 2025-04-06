@@ -21,37 +21,12 @@
       </button>
     </div>
   
-    <!-- Tabela -->
-    <div class="overflow-x-auto max-w-4xl mx-auto">
-      <table class="w-full bg-white shadow rounded-lg">
-        <thead class="bg-gray-200 text-gray-700">
-          <tr>
-            <th class="text-left px-4 py-3 text-sm md:text-base">ID</th>
-            <th class="text-left px-4 py-3 text-sm md:text-base">Nome</th>
-            <th class="text-right px-4 py-3 text-sm md:text-base">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (aluno of alunosMatriculados; track aluno.id) {
-          <tr class="border-t text-sm md:text-base">
-            <td class="px-4 py-3">{{ aluno.id }}</td>
-            <td class="px-4 py-3">{{ aluno.nome }}</td>
-            <td class="px-4 py-3 text-right">
-              <button
-                (click)="cancelarMatricula(aluno.idMatricula)"
-                class="text-red-600 hover:text-red-800 font-semibold"
-              >
-                Cancelar matrícula
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+    @if (dadosTabela) {
+      <app-tabela-generica [acoes]="dadosTabela.acoes" [chaves]="dadosTabela.chaves" [colunas]="dadosTabela.colunas"
+        [dados]="dadosTabela.dados" />
+      }
   </div>
   
-  <!-- Modal -->
   @if (modalAberto) {
     <app-modal-adicionar-alunos
       [curso]="curso"

@@ -3,10 +3,13 @@ import { AlunosService } from '../../../services/alunos.service';
 import { MatriculaService } from '../../../services/matricula.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalAdicionarAlunosComponent } from '../../../components/modal-adicionar-alunos/modal-adicionar-alunos.component';
+import { TabelaGenericaComponent } from "../../../components/tabela-generica/tabela-generica.component";
+import DadosTabelaGenerica from '../../../types/dadosTabelaGenerica.interface';
+import AlunoMatriculadoDto from '../../../types/matricula.dto';
 
 @Component({
   selector: 'app-alunos-matriculados',
-  imports: [ModalAdicionarAlunosComponent],
+  imports: [ModalAdicionarAlunosComponent, TabelaGenericaComponent],
   templateUrl: './alunos-matriculados.component.html',
 })
 export class AlunosMatriculadosComponent {
@@ -21,6 +24,7 @@ export class AlunosMatriculadosComponent {
   alunosMatriculados: any[] = [];
   modalAberto: boolean = false;
   curso: any = null;
+  dadosTabela: DadosTabelaGenerica | null = null;
 
   ngOnInit() {
     this.buscarAlunos();
@@ -83,12 +87,24 @@ export class AlunosMatriculadosComponent {
     this.matriculasService.buscar(this.curso.id)
     .subscribe({
       next: (dados) => {
-        this.alunosMatriculados = dados
+        this.alunosMatriculados = dados;
+        this.montarDadosTabela(dados);
       },
       error: (erro) => {
         console.log('Erro ao carregar alunos', erro);
       },
     })
   }
+
+    montarDadosTabela(alunos: AlunoMatriculadoDto[]) {
+      this.dadosTabela = {
+        colunas: ['ID', 'Nome'],
+        chaves: ['id', 'nome'],
+        dados: alunos,
+        acoes: [
+          { titulo: 'Cancelar', callback: (curso: AlunoMatriculadoDto) => this.cancelarMatricula(curso.idMatricula)  },
+        ]
+      }
+    }
 
 }

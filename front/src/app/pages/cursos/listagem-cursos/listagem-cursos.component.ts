@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 import { AlunosService } from '../../../services/alunos.service';
 import { Router } from '@angular/router';
 import { CursosService } from '../../../services/cursos.service';
-import { ModalAdicionarAlunosComponent } from "../../../components/modal-adicionar-alunos/modal-adicionar-alunos.component";
-import { MatriculaService } from '../../../services/matricula.service';
+import { TabelaGenericaComponent } from "../../../components/tabela-generica/tabela-generica.component";
+import CursoDto from '../../../types/curso.dto';
+import DadosTabelaGenerica from '../../../types/dadosTabelaGenerica.interface';
 
 @Component({
   selector: 'app-listagem-cursos',
-  imports: [ModalAdicionarAlunosComponent],
+  imports: [TabelaGenericaComponent],
   templateUrl: './listagem-cursos.component.html',
 })
 export class ListagemCursosComponent {
 
   constructor(private cursosService: CursosService,
     private alunosService: AlunosService,
-    private matriculasService: MatriculaService,
     private router: Router) { }
 
   cursos: any[] = [];
@@ -22,16 +22,19 @@ export class ListagemCursosComponent {
   cursoSelecionado: any = null;
   modalAberto: boolean = false;
 
+  dadosTabela: DadosTabelaGenerica | null = null;
+
   ngOnInit() {
     this.buscarCursos();
-    this.buscarAlunos();
+    // this.buscarAlunos();
   }
 
   buscarCursos() {
     this.cursosService.buscar()
       .subscribe({
-        next: (dados) => {
-          this.cursos = dados
+        next: (dados: CursoDto[]) => {
+          this.cursos = dados;
+          this.montarDadosTabela(dados);
         },
         error: (erro) => {
           console.log('Erro ao carregar cursos', erro);
@@ -63,29 +66,37 @@ export class ListagemCursosComponent {
 
   //
 
-  abrirModal(curso: any) {
-    this.cursoSelecionado = curso;
-    this.modalAberto = true;
-  }
+  // abrirModal(curso: any) {
+  //   this.cursoSelecionado = curso;
+  //   this.modalAberto = true;
+  // }
 
-  fecharModal() {
-    this.modalAberto = false;
-    this.cursoSelecionado = null;
-  }
+  // fecharModal() {
+  //   this.modalAberto = false;
+  //   this.cursoSelecionado = null;
+  // }
 
-  confirmarMatricula(idAluno: number) {
+  // buscarAlunos() {
+  //   this.alunosService.buscarAlunos()
+  //     .subscribe({
+  //       next: (dados) => {
+  //         this.alunos = dados
+  //       },
+  //       error: (erro) => {
+  //         console.log('Erro ao carregar alunos', erro);
+  //       },
+  //     })
+  // }
 
-  }
-
-  buscarAlunos() {
-    this.alunosService.buscarAlunos()
-      .subscribe({
-        next: (dados) => {
-          this.alunos = dados
-        },
-        error: (erro) => {
-          console.log('Erro ao carregar alunos', erro);
-        },
-      })
+  montarDadosTabela(cursos: CursoDto[]) {
+    this.dadosTabela = {
+      colunas: ['ID', 'Nome'],
+      chaves: ['id', 'nome'],
+      dados: cursos,
+      acoes: [
+        { titulo: 'Matricular alunos', callback: (curso: CursoDto) => { console.log('asdasdasdasdasd'); this.irPaginaAlunosMatriculados(curso.id) } },
+        { titulo: 'Cancelar', callback: (curso: CursoDto) => { this.removerCurso(curso.id) } },
+      ]
+    }
   }
 }

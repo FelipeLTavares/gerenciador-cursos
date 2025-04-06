@@ -4,6 +4,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { constants } from '../constants/contants';
+import { UsuarioDto } from '../types/usuario.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
     private router: Router) {
     }
 
-  login(credentials: { usuario: string; senha: string }): Observable<any> {
+  login(credentials: UsuarioDto): Observable<any> {
     console.log('chegou aqui')
     return this.http.post( `${constants.BASE_URL}/auth/login`, credentials, {headers: new HttpHeaders({})});
   }

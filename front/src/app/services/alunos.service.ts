@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { constants } from '../constants/contants';
 import { Observable } from 'rxjs';
+import { CreateAlunoDto } from '../types/aluno.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AlunosService {
     return this.http.get(`${constants.BASE_URL}/alunos`)
   }
 
-  cadastrarAluno(novoAluno: any) {
+  cadastrarAluno(novoAluno: CreateAlunoDto) {
     return this.http.post(`${constants.BASE_URL}/alunos`, novoAluno);
   }
 

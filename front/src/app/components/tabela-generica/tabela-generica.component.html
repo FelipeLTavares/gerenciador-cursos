@@ -1,0 +1,39 @@
+<div class="overflow-x-auto max-w-4xl mx-auto">
+    <table class="w-full bg-white shadow rounded-lg">
+
+        <thead class="bg-gray-200 text-gray-700">
+            <tr>
+                @for (coluna of colunas; track $index) {
+                <th class="text-left px-4 py-3 text-sm md:text-base">
+                    {{ coluna }}
+                </th>
+                }
+                @if(acoes.length) {
+                <th class="text-right px-4 py-3 text-sm md:text-base">
+                    Ações
+                </th>
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (dado of dados; track dado.id) {
+            <tr class="border-t text-sm md:text-base">
+                @for (chave of chaves; track $index) {
+                <td class="px-4 py-3">{{dado[chave]}}</td>
+                }
+                @if(acoes.length) {
+                <td class="px-4 py-3 flex justify-end gap-4">
+                    @for (acao of acoes; track acao.titulo) {
+                    <button (click)="acao.callback(dado)" class="text-black-600 hover:text-gray-400 font-semibold">
+                        {{acao.titulo}}
+                    </button>
+                    }
+                </td>
+                }
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

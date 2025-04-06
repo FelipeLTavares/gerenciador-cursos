@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { constants } from '../constants/contants';
+import { CreateCursoDto } from '../types/curso.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CursosService {
     return this.http.get(`${constants.BASE_URL}/cursos`);
   }
 
-  cadastrar(novoCurso: any) {
+  cadastrar(novoCurso: CreateCursoDto) {
     return this.http.post(`${constants.BASE_URL}/cursos`, novoCurso);
   }
 
