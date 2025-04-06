@@ -71,7 +71,7 @@ export class ListagemCursosComponent {
       dados: cursos,
       acoes: [
         { titulo: 'Matricular alunos', callback: (curso: CursoDto) => { this.irPaginaAlunosMatriculados(curso.id) } },
-        { titulo: 'Cancelar', callback: (curso: CursoDto) => { this.removerCurso(curso.id) } },
+        { titulo: 'Remover', callback: (curso: CursoDto) => { this.removerCurso(curso.id) } },
       ]
     }
   }

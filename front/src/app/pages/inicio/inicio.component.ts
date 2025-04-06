@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-inicio',
@@ -8,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class InicioComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.check().subscribe(() => {})
+  }
 
   irPaginaAlunos() {
     this.router.navigate(['/alunos']);

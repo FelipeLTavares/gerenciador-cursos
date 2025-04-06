@@ -43,4 +43,8 @@ export class AuthService {
   isAuthenticated(): boolean {
     return this.getItem('token') !== null;
   }
+
+  check(): Observable<any> {
+    return this.http.get(`${constants.BASE_URL}/hello`);
+  }
 }

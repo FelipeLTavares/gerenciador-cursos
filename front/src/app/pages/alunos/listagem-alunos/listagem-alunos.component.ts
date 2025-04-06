@@ -15,7 +15,6 @@ export class ListagemAlunosComponent {
 
   constructor(private alunosService: AlunosService, private router: Router) { }
 
-  // alunos: any[] = [];
   dadosTabela: DadosTabelaGenerica | null = null;
 
   ngOnInit() {
@@ -26,7 +25,6 @@ export class ListagemAlunosComponent {
     this.alunosService.buscarAlunos()
       .subscribe({
         next: (dados) => {
-          // this.alunos = dados;
           this.montarDadosTabela(dados);
         },
         error: (erro) => {
@@ -59,7 +57,7 @@ export class ListagemAlunosComponent {
       chaves: ['id', 'nome', 'email'],
       dados: alunos,
       acoes: [
-        { titulo: 'Cancelar', callback: (aluno: AlunoDto) => this.removerAluno(aluno.id) },
+        { titulo: 'Remover', callback: (aluno: AlunoDto) => this.removerAluno(aluno.id) },
       ]
     }
   }
