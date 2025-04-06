@@ -1,0 +1,32 @@
+# Node (Angular)
+front/node_modules/
+front/dist/
+front/.angular/cache/
+front/.angular/
+
+# Java/Quarkus
+back/target/
+back/.classpath
+back/.project
+back/.settings/
+back/.idea/
+back/*.iml
+
+# IntelliJ / VSCode
+**/.idea/
+**/.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files (se tiver)
+.env
+.env.*
+
+# Docker (opcional, se for gerar localmente)
+**/.docker/
