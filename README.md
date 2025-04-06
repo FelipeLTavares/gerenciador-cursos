@@ -10,11 +10,11 @@ Esse é projeto faz parte de um teste técnico que visa avaliar meus conheciment
  - Pronto, o sistema está disponívle para uso!
 
 ## Funcionalidades
- - 1. Logar no sistema;
- - 2. Cadastrar, listar e excluir alunos;
- - 3. Cadastrar, listar e excluir cursos;
- - 4. Matricular alunos em cursos;
- - 5. Listar alunos matriculados por curso.
+1. Logar no sistema;
+2. Cadastrar, listar e excluir alunos;
+3. Cadastrar, listar e excluir cursos;
+4. Matricular alunos em cursos;
+5. Listar alunos matriculados por curso.
 
  ### 1. Logar
  Ao entrar no sistema usar as tentar logar com as credenciais: Usuário: "usuario" e Senha: "senha" para logar
