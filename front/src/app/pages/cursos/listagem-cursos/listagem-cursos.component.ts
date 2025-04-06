@@ -64,37 +64,13 @@ export class ListagemCursosComponent {
       })
   }
 
-  //
-
-  // abrirModal(curso: any) {
-  //   this.cursoSelecionado = curso;
-  //   this.modalAberto = true;
-  // }
-
-  // fecharModal() {
-  //   this.modalAberto = false;
-  //   this.cursoSelecionado = null;
-  // }
-
-  // buscarAlunos() {
-  //   this.alunosService.buscarAlunos()
-  //     .subscribe({
-  //       next: (dados) => {
-  //         this.alunos = dados
-  //       },
-  //       error: (erro) => {
-  //         console.log('Erro ao carregar alunos', erro);
-  //       },
-  //     })
-  // }
-
   montarDadosTabela(cursos: CursoDto[]) {
     this.dadosTabela = {
       colunas: ['ID', 'Nome'],
       chaves: ['id', 'nome'],
       dados: cursos,
       acoes: [
-        { titulo: 'Matricular alunos', callback: (curso: CursoDto) => { console.log('asdasdasdasdasd'); this.irPaginaAlunosMatriculados(curso.id) } },
+        { titulo: 'Matricular alunos', callback: (curso: CursoDto) => { this.irPaginaAlunosMatriculados(curso.id) } },
         { titulo: 'Cancelar', callback: (curso: CursoDto) => { this.removerCurso(curso.id) } },
       ]
     }

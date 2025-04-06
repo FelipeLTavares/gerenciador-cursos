@@ -18,7 +18,6 @@ export class AuthService {
     }
 
   login(credentials: UsuarioDto): Observable<any> {
-    console.log('chegou aqui')
     return this.http.post( `${constants.BASE_URL}/auth/login`, credentials, {headers: new HttpHeaders({})});
   }
   

@@ -19,7 +19,6 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login({ usuario: this.usuario, senha: this.senha }).subscribe({
       next: (response) => {
-        console.log('response', response)
         localStorage.setItem('token', response.token);
         this.router.navigate(['/']);
       },
