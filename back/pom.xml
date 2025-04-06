@@ -72,6 +72,16 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--JWT Security-->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-security</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
