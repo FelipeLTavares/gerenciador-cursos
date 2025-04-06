@@ -35,4 +35,10 @@ public class AlunoController {
         boolean deleted = alunoService.apagar(id);
         return deleted ? Response.noContent().build() : Response.status(404).build();
     }
+
+    @GET
+    @Path("/alunos-nao-matriculados/{id}")
+    public List<Aluno> buscarAlunosNaoMatriculados(@PathParam("id") Long id) {
+        return alunoService.buscarAlunosNaoMatriculadosNoCurso(id);
+    }
 }

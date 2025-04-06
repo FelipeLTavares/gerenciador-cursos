@@ -4,6 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.unifor.entities.Curso;
 import org.unifor.repositories.CursoRepository;
+import org.unifor.repositories.MatriculaRepository;
 
 import java.util.List;
 
@@ -11,6 +12,8 @@ import java.util.List;
 public class CursoService {
     @Inject
     CursoRepository cursoRepository;
+    @Inject
+    MatriculaRepository matriculaRepository;
 
     public void cadastrar(Curso curso) {
         cursoRepository.persist(curso);
@@ -21,6 +24,7 @@ public class CursoService {
     }
 
     public boolean apagar(Long id) {
+        matriculaRepository.delete("curso.id", id);
         return cursoRepository.deleteById(id);
     }
 }

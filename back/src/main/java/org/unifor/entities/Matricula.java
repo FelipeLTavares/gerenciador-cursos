@@ -6,6 +6,10 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(
+    name = "matricula",
+    uniqueConstraints = @UniqueConstraint(columnNames = { "aluno_id", "curso_id" })
+)
 public class Matricula extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
