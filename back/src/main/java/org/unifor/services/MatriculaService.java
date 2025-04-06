@@ -22,7 +22,7 @@ public class MatriculaService {
         List<Matricula> matriculas = Matricula.list("curso.id", cursoId);
 
         return matriculas.stream()
-                .map(m -> new AlunoMatriculadoDto(m.getAluno(), m.getId()))
+                .map(m -> new AlunoMatriculadoDto(m.getAluno(), m.id))
                 .collect(Collectors.toList());
     }
 
